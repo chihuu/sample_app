@@ -42,6 +42,9 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
+
+
+
 # Logs out the current user.
   def log_out
     forget(current_user)
@@ -58,6 +61,10 @@ module SessionsHelper
   # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
+  end
+  def destroy
+    log_out if logged_in?
+    redirect_to root_url
   end
   def create
     user = User.find_by(email: params[:session][:email].downcase)
