@@ -24,19 +24,6 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  host = 'fast-castle-72970.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
-  ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
-    :enable_starttls_auto => true
-  }
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -53,15 +40,11 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
-  # Force all access to the app over SSL, use Strict-Transport-Security,
-  # and use secure cookies.
-  config.force_ssl = true
-
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -100,4 +83,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => 'https://fast-castle-72970.herokuapp.com' }  
+  config.action_mailer.delivery_method = :smtp  
+  config.action_mailer.perform_deliveries = true  
+  config.action_mailer.raise_delivery_errors = true  
+  config.action_mailer.default :charset => "utf-8"  
+  config.action_mailer.smtp_settings = {  
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "herokuapp.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: ENV["GMAIL_USERNAME"],
+  password: ENV["GMAIL_PASSWORD"]
+}
 end

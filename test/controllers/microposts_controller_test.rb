@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class MicropostsControllerTest < ActionDispatch::IntegrationTest
+<<<<<<< HEAD
 
   def setup
+=======
+ def setup
+>>>>>>> user-microposts
     @micropost = microposts(:orange)
   end
 
@@ -19,6 +23,7 @@ class MicropostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to login_url
   end
+<<<<<<< HEAD
 
   test "should redirect destroy for wrong micropost" do
     log_in_as(users(:michael))
@@ -29,3 +34,6 @@ class MicropostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 end
+=======
+end
+>>>>>>> user-microposts

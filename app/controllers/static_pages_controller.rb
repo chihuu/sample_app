@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  protect_from_forgery with: :exception
   def home
   	 if logged_in?
       @micropost  = current_user.microposts.build

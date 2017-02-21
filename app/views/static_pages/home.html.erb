@@ -1,3 +1,4 @@
+<% provide(:title, "Home") %>
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
@@ -11,6 +12,9 @@
     <div class="col-md-8">
       <h3>Micropost Feed</h3>
       <%= render 'shared/feed' %>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
     </div>
   </div>
   </div>
